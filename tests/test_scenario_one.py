@@ -47,31 +47,20 @@ def test_scenario_one(browser):
 
     tensor_more_details_page: TensorMoreDetails = TensorMoreDetails(browser, browser.current_url)
 
-    tensor_more_details_page.should_be_image_develop_sbis()
+    #Проверяем равномерности размеров изображений в разделе Работаем
+    images_list = [
+        tensor_more_details_page.should_be_image_develop_sbis(),
+        tensor_more_details_page.should_be_image_promote_services(),
+        tensor_more_details_page.should_be_image_create_infrastructure(),
+        tensor_more_details_page.should_be_image_image_accompanying_clients()
+        ]
 
-    tensor_more_details_page.should_be_image_promote_services()
+    initial_height = images_list[0].size['height']
+    initial_width = images_list[0].size['width']
 
-    tensor_more_details_page.should_be_image_create_infrastructure()
-
-    tensor_more_details_page.should_be_image_image_accompanying_clients()
-
-
-
-
-
-
-
-
-    #Проверяем, что мы на сайте tensor.tu
-    # current_url = page.browser.current_url
-    # assert "tensor.ru" in current_url, f"Expected URL 'tensor.ru', but got {current_url}"
-    #
-    # tensor_page: Tensor_page = Tensor_page(browser, link)
-    # tensor_page.open()
-
-    # #Проверяем, что есть блок "Сила в людях"
-    # tensor_page.
-
+    for image in images_list:
+        assert image.size['height'] == initial_height, "Images height are not the same"
+        assert image.size['width'] == initial_width, "Images width are not the same"
 
 
 
