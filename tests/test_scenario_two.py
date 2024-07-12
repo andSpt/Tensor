@@ -3,7 +3,6 @@ from selenium import webdriver
 from pages.sbis_page import SbisPage
 from pages.tensor_page import TensorPage
 from pages.sbis_contacts import SbisContacts
-from pages.tensor_more_details import TensorMoreDetails
 import time
 
 def test_scenario_two(browser):

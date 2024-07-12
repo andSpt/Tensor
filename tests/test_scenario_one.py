@@ -7,6 +7,7 @@ from pages.tensor_more_details import TensorMoreDetails
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import ElementClickInterceptedException
+import time
 
 
 
@@ -17,21 +18,17 @@ def test_scenario_one(browser):
 
     #Проверяем СБИС контакты
     contacts = page.should_be_contacts()
-    # link = contacts.get_attribute('href')
-
-    # sbis_contacts: SbisContacts = SbisContacts(browser, link)
-    # sbis_contacts.open()
 
     #Переходим в СБИС контакты
     contacts.click()
 
-
+    time.sleep(1)
     # tensor_banner = WebDriverWait(browser, 10).until(
     #     EC.presence_of_element_located((By.CSS_SELECTOR, "#contacts_clients a[href='https://tensor.ru/']")))
 
     sbis_contacts: SbisContacts = SbisContacts(browser, browser.current_url)
 
-    tensor_banner = page.should_be_tensor_banner()
+    tensor_banner = sbis_contacts.should_be_tensor_banner()
     # print(tensor_banner, tensor_banner.get_attribute('href'))
     # tensor_banner.click()
 
@@ -81,6 +78,8 @@ def test_scenario_one(browser):
     #Проходим на tensor more_details
     tensor_more_details.click()
     #
+
+    time.sleep(1)
     tensor_more_details_page: TensorMoreDetails = TensorMoreDetails(browser, browser.current_url)
 
     # image = tensor_more_details_page.should_be_image_develop_sbis()
