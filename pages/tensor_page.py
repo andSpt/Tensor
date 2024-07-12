@@ -1,8 +1,11 @@
 from pages.base_page import BasePage
-from locators import TensorLocators
+from locators import TensorLocators, TensorMoreDetailsLocators
 
 
 class TensorPage(BasePage):
+
+    def __init__(self, browser, url, timeout=10):
+        super().__init__(browser, url, timeout)
 
     def should_be_tensor_url(self):
         """Проверка на url-адрес"""
@@ -22,12 +25,5 @@ class TensorPage(BasePage):
 
 
 
-    def should_be_image_image_accompanying_clients(self):
-        assert (image_accompanying_clients := self.get_element(
-            TensorLocators.IMAGE_ACCOMPANYING_CLIENT)), "image_accompanying_clients is not presented"
-        return image_accompanying_clients
 
 
-    def should_be_contacts(self):
-        assert (link := self.get_element(TensorLocators.SBIS_CONTASTS)), "sbis_contacts is not presented"
-        link.click()

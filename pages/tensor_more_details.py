@@ -4,6 +4,10 @@ from locators import TensorMoreDetailsLocators
 
 class TensorMoreDetails(BasePage):
 
+    def __init__(self, browser, url, timeout=10):
+        super().__init__(browser, url, timeout)
+
+
     def should_be_image_develop_sbis(self):
         assert (image_develop_sbis := self.get_element(
             TensorMoreDetailsLocators.IMAGE_DEVELOP_SBIS)), "image_develop_sbis is not presented"
@@ -26,3 +30,4 @@ class TensorMoreDetails(BasePage):
         assert (image_accompanying_clients := self.get_element(
             TensorMoreDetailsLocators.IMAGE_ACCOMPANYING_CLIENT)), "image_accompanying_clients is not presented"
         return image_accompanying_clients
+
