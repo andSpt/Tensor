@@ -15,8 +15,8 @@ class SbisContacts(BasePage):
 
     def __init__(self, browser: WebDriver, url: str, timeout=10) -> None:
         super().__init__(browser, url, timeout)
-        self.my_region_ru: str = 'г. Москва'
-        self.my_region_en: str = 'moskva'
+        self.my_region_ru: str = 'Ярославская обл.'
+        self.my_region_en: str = '76-yaroslavskaya-oblast'
         self.test_region_ru: str = 'Камчатский край'
         self.test_region_en: str = 'kamchatskij-kraj'
 
