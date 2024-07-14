@@ -1,17 +1,20 @@
 import time
+
+from selenium.webdriver.remote.webelement import WebElement
+
 from pages.sbis_page import SbisPage
 from pages.tensor_page import TensorPage
 from pages.sbis_contacts import SbisContacts
 from pages.tensor_more_details import TensorMoreDetails
 
 
-def test_scenario_one(browser):
-    link = "https://sbis.ru/"
+def test_scenario_one(browser) -> None:
+    link: str = "https://sbis.ru/"
     page: SbisPage = SbisPage(browser, link)
     page.open()
 
     # Проверяем СБИС контакты
-    contacts = page.should_be_contacts()
+    contacts: WebElement = page.should_be_contacts()
 
     # Переходим в СБИС контакты
     contacts.click()
