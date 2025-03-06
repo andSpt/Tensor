@@ -24,4 +24,17 @@ def browser():
     yield browser
     browser.quit()
 
+@pytest.fixture(scope='session')
+def cleanup_download():
+    if DOWNLOAD_DIR.is_dir():
+        shutil.rmtree(str(DOWNLOAD_DIR))
+    DOWNLOAD_DIR.mkdir(parents=True, exist_ok=True)
+    yield
+    shutil.rmtree(str(DOWNLOAD_DIR))
+
+
+@pytest.fixture
+def config_data():
+    data: dict = {'path_to_dir_download': DOWNLOAD_DIR}
+    return data
 
