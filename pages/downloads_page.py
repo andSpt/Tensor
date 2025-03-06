@@ -6,8 +6,6 @@ from locators import DownloadSabyLocators
 
 
 class DownloadsPage(BasePage):
-    # def __init__(self, browser: WebDriver, url: str, timeout: int) -> None:
-    #     super().__init__(browser, url, timeout)
 
     def should_be_sbis_plugin(self) -> WebElement:
         assert (sbis_plugin := self.is_element_present(DownloadSabyLocators.SBIS_PLUGIN)), "нет кнопки СБИС Плагин"
